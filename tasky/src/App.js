@@ -4,6 +4,8 @@ import Task from './components/Task';
 import React, {useState} from 'react';
 import AddTaskForm from './components/Form';
 import { v4 as uuidv4 } from 'uuid';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 function App() {
   const [taskState, setTaskState] = useState({
@@ -69,9 +71,27 @@ function App() {
 
 
 
-  return (
+  return (    
     <div className="container">
-      <h1>Tasky</h1>
+      <Container component="main">
+        <Typography
+          component="h1"
+          variant="h2"
+          align="center"
+          gutterBottom
+          sx = {{
+            backgroundColor: 'gray',
+            textAlign: 'center',
+            color: 'white',
+            padding: '20px',
+            margin: '20px 0 40px 0',
+            borderRadius: '4px'
+          }}
+        >
+          Tasky
+        </Typography>
+      </Container>
+      
       {taskState.tasks.map((task, index) => (              
         <Task 
           title={task.title}
