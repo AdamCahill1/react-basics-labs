@@ -7,8 +7,22 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 
 const Task = (props) => {
+
+    const getPriorityColor = (priority) => {
+        switch (priority) {
+          case 'Low':
+            return 'green';
+          case 'Medium':
+            return 'orange';
+          case 'High':
+            return 'red';
+          default:
+            return 'info';
+        }
+    };
 
     return ( 
     <Grid
@@ -30,7 +44,7 @@ const Task = (props) => {
                 textAlign: 'center'
                 }}
             />
-            <CardContent>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Box
                 sx={{
                     display: 'flex',
@@ -44,6 +58,19 @@ const Task = (props) => {
                     Due: {props.deadline}
                 </Typography>
                 </Box>
+                
+                <Chip 
+                    label={props.priority}
+                    sx={{
+                        backgroundColor: getPriorityColor(props.priority),
+                        color: 'white',
+                        borderRadius: '16px',
+                        padding: '1px',
+                        textAlign: 'center',
+                        mt: 2, 
+                    }}
+                />
+
                 <Typography
                     component="p"
                     variant="subtitle1"
